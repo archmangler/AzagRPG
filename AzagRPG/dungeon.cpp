@@ -8,6 +8,7 @@
 #include "dungeon.hpp"
 
 void Dungeon::setUpDungeon() {
+    
   for (int r = 0; r < rows; r++) {
     for (int c = 0; c < cols; c++) {
       room room;
@@ -21,6 +22,7 @@ void Dungeon::setUpDungeon() {
   GameCharacter rat = GameCharacter("Rat", 20, 10);
   GameCharacter troll = GameCharacter("Troll", 100, 10);
 
+  //randomise the placement of this as part of game initialisation!
   rooms[2][1].enemies.push_back(bat);
   rooms[1][2].enemies.push_back(rat);
   rooms[0][0].enemies.push_back(troll);

@@ -26,6 +26,7 @@ public:
     
     std::vector<std::string> getMovementActions(); //
     
+    void printDungeonLayout(); //print out the current map status of the dungeon
     void handleMovementActions(); //
     void printActions(std::vector<std::string>); //
     void initiateRoomSequence(); //

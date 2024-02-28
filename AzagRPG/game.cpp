@@ -17,7 +17,9 @@ Game::Game(Player * _player, Dungeon * _dungeon) {
 }
 
 void Game::initiateRoomSequence() {
-  room * room = player->currentRoom;
+  
+    room * room = player->currentRoom;
+    
   if (room->row == 0 && room->col == 0 && room->enemies.empty()) {
     std::cout << "Congratulations, you have reached the exit and are free of the dungeon! Farwell " << player->getName() << "!\n";
     isGameOver = true;
@@ -29,6 +31,7 @@ void Game::initiateRoomSequence() {
   } else if (!room->items.empty()) {
     handleItemActions();
   } else {
+    printDungeonLayout(); //print the dungeon layout in simple text format
     handleMovementActions();
   }
 }
@@ -85,6 +88,38 @@ void Game::handleMovementActions() {
   std::cout << "You are now in room " << newRoom->row << " " << newRoom->col << std::endl;
 }
 
+//print the dungeon layout
+void Game::printDungeonLayout() {
+
+    int horizontalLoc = 0;
+    int verticalLoc = 0;
+
+    room * currentRoom = &dungeon->rooms[player->currentRoom->row][player->currentRoom->col];
+    horizontalLoc = currentRoom->row;
+    verticalLoc = currentRoom->col;
+
+    std::cout << "The Map of Azag lies below:\n\n";
+
+    //*WARNING* this may not be what you intend!
+    for(int i = 0;i <  dungeon->rows ; i++) {
+        for(int j = 0; j < dungeon->cols ; j++) {
+            if(j == horizontalLoc && i == verticalLoc) {
+                std::cout << "  [*]  ";
+            } else {
+                std::cout << "  [?]  ";
+            }
+        }
+        std::cout << "\n";
+        std::cout << "\n";
+        
+    }
+    
+    std::cout << "\n";
+    std::cout << "You are here: " << horizontalLoc << ":" <<  verticalLoc <<"\n";
+    std::cout << "\n";
+    std::cout << "\n";
+}
+
 void Game::handleEnemyActions() {
   std::cout << "There is an enemy " << player->currentRoom->enemies[0].getName() << " in this room! What would you like to do?\n";
   std::vector<std::string> actions;
@@ -99,6 +134,7 @@ void Game::handleEnemyActions() {
   } else {
     player->retreat();
   }
+
 }
 
 void Game::engageInCombat() {

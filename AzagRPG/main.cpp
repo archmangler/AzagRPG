@@ -12,8 +12,6 @@ int main() {
     Dungeon dungeon;
     Game game = Game(&player, &dungeon);
     
-    //std::cout << player.getName() << std::endl;
-    
     std::cout << "Good luck, " << name << "! Beware, there are many enemies in the dungeon but also some items that may come in handy\n\n";
     
     while(!game.isGameOver){

@@ -5,7 +5,7 @@
 
 class GameCharacter {
   private:
-    std::string name;
+    std::string id;
 
   protected:
     int damage = 0;
@@ -13,6 +13,7 @@ class GameCharacter {
 
 
   public:
+    std::string name;
     GameCharacter(std::string, int, int);
     void takeDamage(int);
     bool checkIfAlive();
