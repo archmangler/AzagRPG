@@ -19,7 +19,4 @@ int main() {
     while(!game.isGameOver){
         game.initiateRoomSequence();
     }
-    
-    //game.handleMovementActions();
-    
 }
