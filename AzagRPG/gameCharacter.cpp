@@ -8,7 +8,7 @@ GameCharacter::GameCharacter(std::string _name, int _health, int _damage) {
 }
 
 void GameCharacter::takeDamage(int amount) {
-  currentHealth = currentHealth - amount;
+  currentHealth -= currentHealth;
 }
 
 bool GameCharacter::checkIfAlive() {

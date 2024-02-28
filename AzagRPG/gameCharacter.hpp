@@ -8,7 +8,7 @@ class GameCharacter {
     std::string name;
 
   protected:
-    int damage;
+    int damage = 0;
     int maxHealth;
 
 

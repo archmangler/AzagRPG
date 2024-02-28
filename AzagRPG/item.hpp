@@ -13,8 +13,8 @@
 
 struct item {
     std::string name;
-    int damage;
-    int health;
+    int damage = 0;
+    int health = 0;
 };
 
 #endif /* item_hpp */
