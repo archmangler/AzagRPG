@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		AC6EEFF82B7368130013417A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC6EEFF72B7368130013417A /* main.cpp */; };
+		ACCDB5972B8845870084FE17 /* room.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACCDB5962B8845870084FE17 /* room.cpp */; };
+		ACCDB59A2B8849DA0084FE17 /* dungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACCDB5982B8849DA0084FE17 /* dungeon.cpp */; };
+		ACCDB59D2B885D6B0084FE17 /* gameCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACCDB59B2B885D6B0084FE17 /* gameCharacter.cpp */; };
+		ACCDB5A02B8868FF0084FE17 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACCDB59E2B8868FF0084FE17 /* player.cpp */; };
+		ACCDB5A32B887F8B0084FE17 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACCDB5A12B887F8B0084FE17 /* game.cpp */; };
+		ACCDB5A62B8CEB1B0084FE17 /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACCDB5A42B8CEB1B0084FE17 /* item.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,17 @@
 /* Begin PBXFileReference section */
 		AC6EEFF42B7368130013417A /* AzagRPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AzagRPG; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6EEFF72B7368130013417A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		ACCDB5962B8845870084FE17 /* room.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = room.cpp; sourceTree = "<group>"; };
+		ACCDB5982B8849DA0084FE17 /* dungeon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dungeon.cpp; sourceTree = "<group>"; };
+		ACCDB5992B8849DA0084FE17 /* dungeon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dungeon.hpp; sourceTree = "<group>"; };
+		ACCDB59B2B885D6B0084FE17 /* gameCharacter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gameCharacter.cpp; sourceTree = "<group>"; };
+		ACCDB59C2B885D6B0084FE17 /* gameCharacter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gameCharacter.hpp; sourceTree = "<group>"; };
+		ACCDB59E2B8868FF0084FE17 /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		ACCDB59F2B8868FF0084FE17 /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		ACCDB5A12B887F8B0084FE17 /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		ACCDB5A22B887F8B0084FE17 /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+		ACCDB5A42B8CEB1B0084FE17 /* item.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = item.cpp; sourceTree = "<group>"; };
+		ACCDB5A52B8CEB1B0084FE17 /* item.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = item.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +75,17 @@
 			isa = PBXGroup;
 			children = (
 				AC6EEFF72B7368130013417A /* main.cpp */,
+				ACCDB5962B8845870084FE17 /* room.cpp */,
+				ACCDB5982B8849DA0084FE17 /* dungeon.cpp */,
+				ACCDB5992B8849DA0084FE17 /* dungeon.hpp */,
+				ACCDB59B2B885D6B0084FE17 /* gameCharacter.cpp */,
+				ACCDB59C2B885D6B0084FE17 /* gameCharacter.hpp */,
+				ACCDB59E2B8868FF0084FE17 /* player.cpp */,
+				ACCDB59F2B8868FF0084FE17 /* player.hpp */,
+				ACCDB5A12B887F8B0084FE17 /* game.cpp */,
+				ACCDB5A22B887F8B0084FE17 /* game.hpp */,
+				ACCDB5A42B8CEB1B0084FE17 /* item.cpp */,
+				ACCDB5A52B8CEB1B0084FE17 /* item.hpp */,
 			);
 			path = AzagRPG;
 			sourceTree = "<group>";
@@ -119,7 +147,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCDB59A2B8849DA0084FE17 /* dungeon.cpp in Sources */,
+				ACCDB5A02B8868FF0084FE17 /* player.cpp in Sources */,
+				ACCDB5A62B8CEB1B0084FE17 /* item.cpp in Sources */,
+				ACCDB59D2B885D6B0084FE17 /* gameCharacter.cpp in Sources */,
+				ACCDB5972B8845870084FE17 /* room.cpp in Sources */,
 				AC6EEFF82B7368130013417A /* main.cpp in Sources */,
+				ACCDB5A32B887F8B0084FE17 /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
