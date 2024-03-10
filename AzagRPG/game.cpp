@@ -106,6 +106,10 @@ void Game::printDungeonLayout() {
             if(j == horizontalLoc && i == verticalLoc) {
                 std::cout << "  [*]  ";
             } else {
+                
+                //if the current iteration has an enemy location
+                //update the enemy location
+                //else
                 std::cout << "  [?]  ";
             }
         }
