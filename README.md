@@ -25,7 +25,7 @@ traiano@Traianos-iMac AzagRPG % xcodebuild -project ../AzagRPG.xcodeproj
 * Yeah, it's not exactly FinalFantasy VII but we all have to start somewhere ;-)
 
 ```
-traiano@Traianos-iMac Release % ./AzagRPG
+traiano@Traianos-iMac % ./build/Release/AzagRPG
 Welcome to the dungeon. What is your name?
 troy
 Good luck, troy! Beware, there are many enemies in the dungeon but also some items that may come in handy

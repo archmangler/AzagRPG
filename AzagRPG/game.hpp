@@ -33,6 +33,7 @@ public:
     void handleEnemyActions();
     void engageInCombat();
     void handleItemActions();
+    void updateDungeonMapEnemies(room * currentRoom); //update the location of novel artifacts and events on the map
     
 };
 

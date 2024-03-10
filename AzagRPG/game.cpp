@@ -134,7 +134,18 @@ void Game::handleEnemyActions() {
   } else {
     player->retreat();
   }
+    
+    //update the location of the enemy after the encounter
+    room * currentRoom = &dungeon->rooms[player->currentRoom->row][player->currentRoom->col];
+    updateDungeonMapEnemies(currentRoom);
 
+}
+
+void Game::updateDungeonMapEnemies(room * currentRoom){
+    //need a dedicated function to update enemy location
+    std::string enemy = player->currentRoom->enemies[0].getName();
+    std::cout << "\n\n Remembering where our enemy "<< enemy <<" fell :'-( \n\n";
+    std::cout <<"\n\n************************************************************** \n\n";
 }
 
 void Game::engageInCombat() {
