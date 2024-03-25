@@ -6,6 +6,7 @@
 //
 #include "game.hpp"
 #include <iostream>
+#include <map>
 
 Game::Game(Player * _player, Dungeon * _dungeon) {
   player = _player;
@@ -34,6 +35,7 @@ void Game::initiateRoomSequence() {
     printDungeonLayout(); //print the dungeon layout in simple text format
     handleMovementActions();
   }
+    
 }
 
 void Game::printActions(std::vector<std::string> actions) {
@@ -45,7 +47,7 @@ void Game::printActions(std::vector<std::string> actions) {
 std::vector<std::string> Game::getMovementActions() {
   std::vector<std::string> actions;
 
-  room * currentRoom = player->currentRoom;
+  room* currentRoom = player->currentRoom;
   if (currentRoom->col > 0) {
     actions.push_back("Move left");
   }
@@ -82,7 +84,7 @@ void Game::handleMovementActions() {
     verticalMovement = 1;
   }
 
-  room * newRoom = &dungeon->rooms[player->currentRoom->row + verticalMovement][player->currentRoom->col + horizontalMovement];
+  room* newRoom = &dungeon->rooms[player->currentRoom->row + verticalMovement][player->currentRoom->col + horizontalMovement];
   player->moveToRoom(newRoom);
 
   std::cout << "You are now in room " << newRoom->row << " " << newRoom->col << std::endl;
@@ -93,20 +95,33 @@ void Game::printDungeonLayout() {
 
     int horizontalLoc = 0;
     int verticalLoc = 0;
+    int horizontalLocDeadEnemy = 2;
+    int verticalLocDeadEnemy = 2;
+    
+    std::map<room*, std::string>::iterator it;
 
+    room * rm; //for iterating through map of room keys
     room * currentRoom = &dungeon->rooms[player->currentRoom->row][player->currentRoom->col];
     horizontalLoc = currentRoom->row;
     verticalLoc = currentRoom->col;
 
     std::cout << "The Map of Azag lies below:\n\n";
 
+    //FIX shit shit!
     //*WARNING* this may not be what you intend!
     for(int i = 0;i <  dungeon->rows ; i++) {
         for(int j = 0; j < dungeon->cols ; j++) {
             if(j == horizontalLoc && i == verticalLoc) {
-                std::cout << "  [*]  ";
-            } else {
-                
+                //loop through a vector of dead enemies to check if the current coordinate has a defeated enemy in it.
+                for (it = enemyGraveyard.begin(); it != enemyGraveyard.end(); it++) {
+                    rm = it->first;
+                    if(j == rm->row && i == rm->col) {
+                        std::cout << "  [:-(]  ";
+                    } else {
+                        std::cout << "  [*]  ";
+                    }
+                }
+            }else {
                 //if the current iteration has an enemy location
                 //update the enemy location
                 //else
@@ -149,6 +164,7 @@ void Game::updateDungeonMapEnemies(room * currentRoom){
     //need a dedicated function to update enemy location
     std::string enemy = player->currentRoom->enemies[0].getName();
     std::cout << "\n\n Remembering where our enemy "<< enemy <<" fell :'-( \n\n";
+    tendEnemyGraveyard(enemy);
     std::cout <<"\n\n************************************************************** \n\n";
 }
 
@@ -160,6 +176,8 @@ void Game::engageInCombat() {
     if (!enemy->checkIfAlive()) {
       std::cout << "You have defeated the " << enemy->getName() << "!\n";
       player->currentRoom->enemies.clear();
+        //update the enemy graveyard
+        
       return;
     }
 
@@ -184,6 +202,13 @@ void Game::engageInCombat() {
       return;
     }
   }
+}
+
+void Game::tendEnemyGraveyard(std::string _enemy) {
+    //maintain a vector of defeated enemy locations
+    room * currentRoom = &dungeon->rooms[player->currentRoom->row][player->currentRoom->col];
+    enemyGraveyard.insert(std::make_pair(currentRoom,_enemy));
+    std::cout << "Burying enemy " << enemyGraveyard[currentRoom] << " at location " << currentRoom->col << "," << currentRoom->row <<  " R.I.P ..." << std::endl;
 }
 
 void Game::handleItemActions() {
