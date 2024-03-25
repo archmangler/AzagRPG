@@ -15,6 +15,7 @@
 
 #ifndef GAME_HPP
 #define GAME_HPP
+#include <map>
 
 class Game{
 private:
@@ -34,6 +35,10 @@ public:
     void engageInCombat();
     void handleItemActions();
     void updateDungeonMapEnemies(room * currentRoom); //update the location of novel artifacts and events on the map
+    void tendEnemyGraveyard(std::string _enemy); //maintain a list of dead enemies and their locations ([x,y],enemy_name)
+    
+    //the rooms we hid the bodies in
+    std::map<room*,std::string> enemyGraveyard; //map to keey a map of [room,enemy_name]
     
 };
 
