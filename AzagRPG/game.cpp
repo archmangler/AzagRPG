@@ -107,7 +107,7 @@ void Game::printDungeonLayout() {
 
     std::cout << "The Map of Azag lies below:\n\n";
 
-    //FIX shit shit!
+    //FIX this shit!
     //*WARNING* this may not be what you intend!
     for(int i = 0;i <  dungeon->rows ; i++) {
         for(int j = 0; j < dungeon->cols ; j++) {
