@@ -112,20 +112,26 @@ void Game::printDungeonLayout() {
     for(int i = 0;i <  dungeon->rows ; i++) {
         for(int j = 0; j < dungeon->cols ; j++) {
             if(j == horizontalLoc && i == verticalLoc) {
-                //loop through a vector of dead enemies to check if the current coordinate has a defeated enemy in it.
-                for (it = enemyGraveyard.begin(); it != enemyGraveyard.end(); it++) {
-                    rm = it->first;
-                    if(j == rm->row && i == rm->col) {
-                        std::cout << "  [:-(]  ";
-                    } else {
-                        std::cout << "  [*]  ";
-                    }
-                }
+                std::cout << "  [*]  ";
             }else {
                 //if the current iteration has an enemy location
                 //update the enemy location
                 //else
-                std::cout << "  [?]  ";
+                //loop through a vector of dead enemies to check if the current coordinate has a defeated enemy in it.
+                unsigned long int graveSize = enemyGraveyard.size();
+                if(graveSize > 0){
+                    for (it = enemyGraveyard.begin(); it != enemyGraveyard.end(); it++) {
+                        rm = it->first;
+                        if(j == rm->row && i == rm->col) {
+                            std::cout << "  [:-(]  ";
+                        } else {
+                            //std::cout << "  [*]  ";
+                            std::cout << "  [?]  ";
+                        }
+                    }
+                } else {
+                    std::cout << "  [?]  ";
+                }
             }
         }
         std::cout << "\n";
