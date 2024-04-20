@@ -4,7 +4,8 @@ Core Behaviour
 
 * [x] print final map on exit
 * [x] record player paths for duration of the game
-* [] provide option to print path so far
+* [x] provide option to print path so far
+* [x] provide option to quit gracefully
 * [] add drone gamecharacter and effects
 * [] record the duration of the enemy for the duration of the game
 * [] support teleporting at selected, randomised locations
