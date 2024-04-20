@@ -40,6 +40,7 @@ public:
    
     void trackPlayerHistory(); //keep track of player's path through the dungeon (see: playerHistory() vector)
     void displayPlayerHistory(); //print out the player journey so fr through the maze construct.
+    void quitGame(); //leave
     
     //the rooms we hid the bodies in
     std::map<room*,std::string> enemyGraveyard; //map to keep a map of [room,enemy_name]

@@ -67,6 +67,11 @@ std::vector<std::string> Game::getMovementActions() {
   if (currentRoom->row < (dungeon->rows - 1)) {
     actions.push_back("Move down");
   }
+  
+  //standard boilerplate options
+  actions.push_back("Show History");
+  actions.push_back("Quit");
+    
   return actions;
 }
 
@@ -92,6 +97,8 @@ void Game::handleMovementActions() {
     verticalMovement = 1;
   } else if (chosenAction == "Show History") {
       Game::displayPlayerHistory();
+  } else if (chosenAction == "Quit") {
+      Game::quitGame();
   }
 
   room* newRoom = &dungeon->rooms[player->currentRoom->row + verticalMovement][player->currentRoom->col + horizontalMovement];
@@ -279,6 +286,12 @@ void Game::displayPlayerHistory() {
     }
     
     std::cout << "\n";
+}
+
+void Game::quitGame() {
+    //Quit gracefully, or dramatically as the case may be ...
+    std::cout << "Remember " << player->getName() << " ... You will repeat the lesson until you learn it. Quitting is no way to face your demons ..." << std::endl;
+    exit(0);
 }
 
 void Game::handleItemActions() {
