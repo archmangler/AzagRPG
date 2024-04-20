@@ -26,6 +26,8 @@ public:
     Game(Player *, Dungeon *);
     
     std::vector<std::string> getMovementActions(); //
+    std::vector<std::string> playerHistory(); //vector to keep a history of the player's movements through the dungeon
+    std::vector<std::string> enemyHistory(); //vector to keep a history of the enemy's movements through the dungeon
     
     void printDungeonLayout(); //print out the current map status of the dungeon
     void handleMovementActions(); //
@@ -38,7 +40,7 @@ public:
     void tendEnemyGraveyard(std::string _enemy); //maintain a list of dead enemies and their locations ([x,y],enemy_name)
     
     //the rooms we hid the bodies in
-    std::map<room*,std::string> enemyGraveyard; //map to keey a map of [room,enemy_name]
+    std::map<room*,std::string> enemyGraveyard; //map to keep a map of [room,enemy_name]
     
 };
 
