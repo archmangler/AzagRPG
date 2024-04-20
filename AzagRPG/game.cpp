@@ -23,6 +23,13 @@ void Game::initiateRoomSequence() {
     
   if (room->row == 0 && room->col == 0 && room->enemies.empty()) {
     std::cout << "Congratulations, you have reached the exit and are free of the dungeon! Farwell " << player->getName() << "!\n";
+      
+      //print the game map one more time
+      Game::printDungeonLayout();
+      
+      //Show the player journey
+      Game::displayPlayerHistory();
+      
     isGameOver = true;
     return;
   }
@@ -74,6 +81,7 @@ void Game::handleMovementActions() {
 
   int horizontalMovement = 0;
   int verticalMovement = 0;
+    
   if (chosenAction == "Move left") {
     horizontalMovement = -1;
   } else if (chosenAction == "Move up") {
@@ -82,12 +90,17 @@ void Game::handleMovementActions() {
     horizontalMovement = 1;
   } else if (chosenAction == "Move down") {
     verticalMovement = 1;
+  } else if (chosenAction == "Show History") {
+      Game::displayPlayerHistory();
   }
 
   room* newRoom = &dungeon->rooms[player->currentRoom->row + verticalMovement][player->currentRoom->col + horizontalMovement];
   player->moveToRoom(newRoom);
 
   std::cout << "You are now in room " << newRoom->row << " " << newRoom->col << std::endl;
+    
+    //track current location in the player history
+    Game::trackPlayerHistory();
 }
 
 //print the dungeon layout
@@ -95,8 +108,6 @@ void Game::printDungeonLayout() {
 
     int horizontalLoc = 0;
     int verticalLoc = 0;
-    int horizontalLocDeadEnemy = 2;
-    int verticalLocDeadEnemy = 2;
     
     std::map<room*, std::string>::iterator it;
 
@@ -211,10 +222,63 @@ void Game::engageInCombat() {
 }
 
 void Game::tendEnemyGraveyard(std::string _enemy) {
+    
     //maintain a vector of defeated enemy locations
     room * currentRoom = &dungeon->rooms[player->currentRoom->row][player->currentRoom->col];
     enemyGraveyard.insert(std::make_pair(currentRoom,_enemy));
     std::cout << "Burying enemy " << enemyGraveyard[currentRoom] << " at location " << currentRoom->col << "," << currentRoom->row <<  " R.I.P ..." << std::endl;
+    
+}
+
+void Game::trackPlayerHistory() {
+    
+    //maintain a vector of player locations
+    room * currentRoom = &dungeon->rooms[player->currentRoom->row][player->currentRoom->col]; //get the current room
+    
+    playerHistory.push_back(currentRoom); //store it on the record
+    
+    std::cout << "keeping track of your location ..." << std::endl;
+}
+
+void Game::displayPlayerHistory() {
+    //Display the player trail thus far
+    std::cout << "The way you travelled: " << std::endl;
+    
+    //list all the rooms by coordinate
+    //for(int i=0;i<playerHistory.size();i++){
+    //    std::cout << "room: " << playerHistory[i]->col <<","<< playerHistory[i]->row << std::endl ;
+    //}
+    
+    //Print the map
+    int horizontalLoc = 0;
+    int verticalLoc = 0;
+    
+    std::map<room*, std::string>::iterator it;
+    
+    room * rm; //for iterating through map of room keys
+    
+    //FIX this shit!
+    //*WARNING* this may not be what you intend!
+    for(int i = 0;i < dungeon->rows; i++) {
+
+        for(int j = 0; j< dungeon->cols ; j++) {
+            //check if the current printing room was travelled
+            
+            for(int k =0;k<playerHistory.size();k++){
+                horizontalLoc = playerHistory[k]->col;
+                verticalLoc = playerHistory[k]->row;
+                if(i == horizontalLoc && j == verticalLoc) {
+                    std::cout << "  [Z]  ";
+                }
+            }
+            
+        }
+        
+        std::cout << "\n";
+        std::cout << "\n";
+    }
+    
+    std::cout << "\n";
 }
 
 void Game::handleItemActions() {

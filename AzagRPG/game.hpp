@@ -26,6 +26,7 @@ public:
     Game(Player *, Dungeon *);
     
     std::vector<std::string> getMovementActions(); //
+    std::vector<std::string> enemyHistory(); //TBD vector to keep a history of the enemy's movements through the dungeon
     
     void printDungeonLayout(); //print out the current map status of the dungeon
     void handleMovementActions(); //
@@ -36,10 +37,13 @@ public:
     void handleItemActions();
     void updateDungeonMapEnemies(room * currentRoom); //update the location of novel artifacts and events on the map
     void tendEnemyGraveyard(std::string _enemy); //maintain a list of dead enemies and their locations ([x,y],enemy_name)
+   
+    void trackPlayerHistory(); //keep track of player's path through the dungeon (see: playerHistory() vector)
+    void displayPlayerHistory(); //print out the player journey so fr through the maze construct.
     
     //the rooms we hid the bodies in
-    std::map<room*,std::string> enemyGraveyard; //map to keey a map of [room,enemy_name]
-    
+    std::map<room*,std::string> enemyGraveyard; //map to keep a map of [room,enemy_name]
+    std::vector<room*> playerHistory; //
 };
 
 
