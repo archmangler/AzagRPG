@@ -23,6 +23,10 @@ void Game::initiateRoomSequence() {
     
   if (room->row == 0 && room->col == 0 && room->enemies.empty()) {
     std::cout << "Congratulations, you have reached the exit and are free of the dungeon! Farwell " << player->getName() << "!\n";
+      
+      //print the game map one more time
+      Game::printDungeonLayout();
+      
     isGameOver = true;
     return;
   }
@@ -95,8 +99,8 @@ void Game::printDungeonLayout() {
 
     int horizontalLoc = 0;
     int verticalLoc = 0;
-    int horizontalLocDeadEnemy = 2;
-    int verticalLocDeadEnemy = 2;
+    //int horizontalLocDeadEnemy = 2;
+    //int verticalLocDeadEnemy = 2;
     
     std::map<room*, std::string>::iterator it;
 
